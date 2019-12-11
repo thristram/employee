@@ -28,4 +28,7 @@ Do the following command and follow instructions. You may need to present a MySQ
 ```sh
 node PROJECT_ROOT_DIECTORY/bin/www
 ```
+## Demo
+A demo website can be found at http://employee.thristram.com (Sorry, no https access, because it is expensive to buy a https cretificate)
 
+This demo is deployed on Amazon Web Services EC2. Database on Amazon Aurora. Together with Application Load Balancer and Auto Scaling to form a scalable architecture.
