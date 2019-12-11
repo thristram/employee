@@ -1,0 +1,31 @@
+nav#sidenav-main.sidenav.navbar.navbar-vertical.fixed-left.navbar-expand-xs.navbar-light.bg-white
+    .scrollbar-inner
+        // Brand
+        .sidenav-header.d-flex.align-items-center
+            a.navbar-brand(href='/')
+                img.navbar-brand-img.pr-2(src='/img/logo/black.png' style='border-right:1px solid #D0D0D0;')
+                sup.text-primary.font-weight-600 HR
+            .ml-auto
+                // Sidenav toggler
+                .sidenav-toggler.d-none.d-xl-block(data-action='sidenav-unpin' data-target='#sidenav-main')
+                    .sidenav-toggler-inner
+                        i.sidenav-toggler-line
+                        i.sidenav-toggler-line
+                        i.sidenav-toggler-line
+        .navbar-inner
+            // Collapse
+            #sidenav-collapse-main.collapse.navbar-collapse
+                // Nav items
+                ul.navbar-nav
+
+
+                    li.nav-item
+                        a.nav-link(class=(adminPageGroup === "users") ? "active" : "" href='#navbar-users' data-toggle='collapse' role='button' aria-expanded='false' aria-controls='navbar-users')
+                            i.ni.ni-single-02.text-orange
+                            span.nav-link-text Employees
+                        #navbar-users.collapse(class=(adminPageGroup === "users") ? "show" : "")
+                            ul.nav.nav-sm.flex-column
+                                li.nav-item(class=(pageAction === "userList") ? "active" : "")
+                                    a.nav-link(href='/') Employee List
+                                li.nav-item(class=(pageAction === "userNew") ? "active" : "")
+                                    a.nav-link(href='/edit') Create New

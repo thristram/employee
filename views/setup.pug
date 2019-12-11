@@ -1,0 +1,63 @@
+doctype html
+head
+    include //sharedModule/pageElement/pageHead
+    // Argon CSS
+    include //sharedModule/css/argon
+body.bg-default
+    // Navbar
+
+    // Main content
+    .main-content(style='background:')
+        // Header
+        .header.bg-gradient-primary.py-4.py-lg-6.pt-lg-2
+            .container
+                .header-body.text-center.mb-7
+                    .row.justify-content-center
+                        .col-xl-5.col-lg-6.col-md-8.px-5
+                            h1.text-white Welcome!
+                            p.text-lead.text-white Welcome to the Employee Management System.
+
+            .separator.separator-bottom.separator-skew.zindex-100
+                svg(x='0' y='0' viewbox='0 0 2560 100' preserveaspectratio='none' version='1.1' xmlns='http://www.w3.org/2000/svg')
+                    polygon.fill-default(points='2560 0 2560 100 0 100')
+        // Page content
+        .container.mt--8.pb-5
+            .row.justify-content-center
+                .col-lg-5.col-md-7
+                    .card.bg-secondary.border-0.mb-0
+
+                        .card-body.px-lg-5.py-lg-5
+                            if error
+                                .text-center.text-warning.mb-4
+                                    small=error
+                            else
+                                .text-center.text-muted.mb-4
+                                    small Please enter your database settings
+                            form(role='form' method='post' action='/setup/configdb')
+                                .form-group.mb-3
+                                    .input-group.input-group-merge.input-group-alternative
+                                        .input-group-prepend
+                                            span.input-group-text
+                                                i.ni.ni-money-coins
+                                        input.form-control(placeholder='MySQL Host' type='text' name='host')
+                                .form-group.mb-3
+                                    .input-group.input-group-merge.input-group-alternative
+                                        .input-group-prepend
+                                            span.input-group-text
+                                                i.ni.ni-single-02
+                                        input.form-control(placeholder='MySQL Username' type='username' name='username')
+                                .form-group
+                                    .input-group.input-group-merge.input-group-alternative
+                                        .input-group-prepend
+                                            span.input-group-text
+                                                i.ni.ni-lock-circle-open
+                                        input.form-control(placeholder='MySQL Password' type='password' name='password')
+
+                                .text-center
+                                    button.btn.btn-primary.my-4(type='submit') Get Started
+
+
+// Core
+include //sharedModule/js/CoreJS
+// Argon JS
+include //sharedModule/js/argon

@@ -1,0 +1,114 @@
+doctype html
+head
+    include //sharedModule/pageElement/pageHead
+    // Argon CSS
+    include //sharedModule/css/argon
+    include //sharedModule/css/css
+// Sidenav
+include //sharedModule/pageElement/sidenav
+// Main content
+#panel.main-content
+    // Topnav
+    include //sharedModule/pageElement/navbar
+    // Header
+    .header.pb-6(class='bg-primary')
+        div.admin-page-bg(style="background-image:url('/img/bg1.png');")
+        .container-fluid
+            .header-body
+                .row.align-items-center.py-4
+                    .col-12
+                        nav.d-none.d-md-inline-block(aria-label='breadcrumb')
+                            ol.breadcrumb.breadcrumb-links.breadcrumb-dark
+                                li.breadcrumb-item
+                                    a(href='/')
+                                        i.fas.fa-home
+                                li.breadcrumb-item
+                                    a(href='/admin/users/list') Employees
+
+
+                    .col-lg-6.col-7
+                        h6.h1.text-white.d-inline-block.mb-0=pageAction === 'userNew' ? subtitle : content ? `${content.firstName} ${content.lastName}` : ''
+                    if content
+                        .col-lg-6.col-5.text-right
+                            a.btn.btn-sm.btn-neutral(href='/api/delete?id=' + content.id)=`Delete Employee`
+    // Page content
+    .container-fluid.mt--6
+        .row
+            .card-wrapper.col
+                .card
+
+                    // Card body
+                    .card-body
+
+                        form#newContentForm.needs-validation.mt-2(novalidate='' method='post' action='/api/update')
+                            if pageAction === 'userEdit'
+                                input(type='hidden', name='id', value=content ? content.id : 0)
+
+                            .form-row
+                                .col-md-4.mb-3
+                                    label.form-control-label(for='validationEID') Employee ID
+                                    input#validationEID.form-control(type='text' placeholder='Employee ID' required='' name = "form_employeeID" value=content ? content.employeeID : '')
+                                    .invalid-feedback
+                                        | Please enter a valid employee ID
+
+                            .form-row
+                                .col-md-4.mb-3
+                                    label.form-control-label(for='validationFirstName') First Name
+                                    input#validationFirstName.form-control(type='text' placeholder='First name' required='' value=content ? content.firstName : '' name = "form_first" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please enter a valid first name
+                                .col-md-4.mb-3
+                                    label.form-control-label(for='validationLastName') Last Name
+                                    input#validationLastName.form-control(type='text' placeholder='Last name' required='' value=content ? content.lastName : '' name = "form_last" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please enter a valid last name
+                                .col-md-4.mb-3
+                                    label.form-control-label(for='validationPhone') Phone Number
+                                    input#validationPhone.form-control(type='text' placeholder='Phone Number' data-mask="(999) 999-9999" aria-describedby='inputGroupPrepend' required='' value=content ? content.phone : '' name="form_phone" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please enter a valid phone number
+                            .form-row
+                                .col-md-6.mb-3
+                                    label.form-control-label(for='validationCity') City
+                                    input#validationCity.form-control(type='text' placeholder='City' required='' value=content ? content.city : '' name = "form_city" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please provide a valid city.
+                                .col-md-3.mb-3
+                                    label.form-control-label(for='validationState') State
+                                    input#validationState.form-control(type='text' placeholder='State' required='' value=content ? content.state: '' name = "form_state" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please provide a valid state.
+                                .col-md-3.mb-3
+                                    label.form-control-label(for='validationCustom05') Country
+                                    input#validationCountry.form-control(type='text' placeholder='Country' required='' value=content ? content.country : '' name = "form_country" minlength="2" maxlength="20")
+                                    .invalid-feedback
+                                        | Please provide a valid country.
+                            .form-row
+                                .col-md-6.mb-3
+                                    label.form-control-label(for='validationHireDate') Hire Date
+                                    input#validationHireDate.form-control.datepicker(placeholder='Hire Date' type='text' required='' value=content ? content.hireDate : '' name = "form_hire")
+                                    .invalid-feedback
+                                        | Please provide a valid hire date.
+                                .col-md-6.mb-3
+                                    label.form-control-label(for='validationEndDate') Employment End Date
+                                    input#validationEndDate.form-control.datepicker(placeholder='Employment End Date' type='text' value=content ? content.endDate ? content.endDate : '' : '' name = "form_end")
+
+                                    .invalid-feedback
+                                        | Please provide a employment end date.
+
+
+                            button.btn.btn-primary.mt-5(type='submit')=(pageAction === 'userNew') ? 'Create Employee Profile' : 'Update Employee Profile'
+
+
+        // Footer
+        include //sharedModule/pageElement/footer
+// Argon Scripts
+
+// Core
+include //sharedModule/js/CoreJS
+// Argon JS
+script(src="/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+script(src="/vendor/bs-input-mask.min.js")
+include //sharedModule/js/argon
+include //sharedModule/js/formValidation
+

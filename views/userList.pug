@@ -1,0 +1,98 @@
+doctype html
+head
+    include //sharedModule/pageElement/pageHead
+    // Argon CSS
+    include //sharedModule/css/datatable
+    include //sharedModule/css/argon
+    include //sharedModule/css/css
+// Sidenav
+include //sharedModule/pageElement/sidenav
+// Main content
+#panel.main-content
+    // Topnav
+    include //sharedModule/pageElement/navbar
+    // Header
+    .header.bg-primary.pb-6
+        div.admin-page-bg(style="background-image:url('/img/bg1.png');")
+        .container-fluid
+            .header-body
+                .row.align-items-center.py-4
+                    .col-12
+                        nav.d-none.d-md-inline-block(aria-label='breadcrumb')
+                            ol.breadcrumb.breadcrumb-links.breadcrumb-dark
+                                li.breadcrumb-item
+                                    a(href='/')
+                                        i.fas.fa-home
+                                li.breadcrumb-item
+                                    a(href='/') Employees
+
+                    .col-lg-6.col-7
+                        h6.h1.text-white.d-inline-block.mb-0=subtitle
+
+                    .col-lg-6.col-5.text-right
+                        a.btn.btn-sm.btn-neutral(href='/edit') New Employee
+
+    // Page content
+    .container-fluid.mt--6
+        .row
+            .col
+                .card
+
+                    // Light table
+                    .table-responsive.py-4
+                        table.datatable.table.align-items-center.table-flush
+                            thead.thead-light
+                                tr
+                                    th ID
+                                    th Name
+                                    th Phone
+                                    th City
+                                    th State
+                                    th Country
+                                    th Hire Date
+                                    th End Date
+                                    th Action
+                            tbody.list
+                                each listItem in users
+                                    tr
+                                        th(scope='row')
+                                            .media.align-items-center
+                                                .media-body
+                                                    a(href="/admin/user/edit?id=" + listItem.employeeID)
+                                                        span.text-default.mb-0.text-sm #{listItem.employeeID}
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.firstName} #{listItem.lastName}
+
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.phone}
+
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.city}
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.state}
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.country}
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.hireDate}
+                                        td
+                                            span.text-default.mb-0.text-sm #{listItem.endDate ? listItem.endDate : 'In Service'}
+                                        td.text-right
+                                            nav
+                                                ul.pagination.justify-content-end.mb-0
+
+                                                    li.page-item
+                                                        a.page-link.text-warning(href="/api/delete?id=" + listItem.id)
+                                                            i.fa.fa-times
+                                                    li.page-item
+                                                        a.page-link.text-muted(href="/edit?id=" + listItem.id)
+                                                            i.fa.fa-edit
+
+        // Footer
+        include //sharedModule/pageElement/footer
+// Argon Scripts
+// Core
+include //sharedModule/js/CoreJS
+include //sharedModule/js/datatable
+// Argon JS
+include //sharedModule/js/argon
+
