@@ -60,4 +60,8 @@ router.get('/edit', async function(req, res, next) {
 	res.render("editUser", data);
 });
 
+// Healthcheck from Load Balancer
+router.get('/healthcheck', async function(req, res, next) {
+	res.send('ok')
+});
 module.exports = router;
