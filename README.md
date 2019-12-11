@@ -9,7 +9,9 @@ NPM (Usually come with NodeJS installation)
 MySQL Server v5.7 (Currently do not compatible with v8.x due to new authentication method)
 
 Detail on how to install NodeJS and MySQL Server can be found here.
-https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions-enterprise-linux-fedora-and-snap-packages
+
+https://nodejs.org/en/download/package-manager
+
 https://dev.mysql.com/downloads/mysql/5.7.html
 
 ## Dependencies
