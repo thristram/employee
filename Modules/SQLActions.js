@@ -37,9 +37,14 @@ var connected = false;
 
 
 var createConnection = function(callback){
+	if(SQLConnection){
+
+	}
 	SQLConnection = mysql.createPool(global.config.database);
+
 	SQLConnection.getConnection(function(err, connection) {
 		if (err){
+			connection.destroy();
 			connected = false;
 			callback(false);
 			// throw err;
