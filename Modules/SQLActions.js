@@ -50,8 +50,6 @@ var createConnection = function(callback){
 
 	SQLConnection.getConnection(function(err, connection) {
 		if (err){
-			
-			connection.destroy();
 			SQLConnection.end(function (err) {
 				if(err){
 					console.log(err);
