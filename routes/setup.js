@@ -42,7 +42,7 @@ router.post('/configdb', function(req, res, next) {
 	}
 
 	// Try to connect to database
-	if(!SQLAction.connected){
+	if(!SQLAction.getConnectionStatus()){
 		SQLAction.createConnection(function (status) {
 
 			if(status){

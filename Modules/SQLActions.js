@@ -35,7 +35,9 @@ var connected = false;
 //////////////////////////////////////
 
 
-
+var getConnectionStatus = function(){
+	return connected;
+}
 var createConnection = function(callback){
 	if(SQLConnection){
 		SQLConnection.end(function (err) {
@@ -570,7 +572,8 @@ module.exports = {
     parseField : parseField,
     SQLConnection: SQLConnection,
 	createConnection : createConnection,
-	connected: connected
+	connected: connected,
+	getConnectionStatus: getConnectionStatus
 
 };
 

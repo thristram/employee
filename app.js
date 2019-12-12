@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/setup', setupRouter);
 app.use(function(req, res, next) {
-	if(SQLAction.connected){
+	if(SQLAction.getConnectionStatus()){
 		next()
 	}   else {
 		if(!global.config || !global.config.hasOwnProperty("database") || !global.config.database.host || !global.config.database.user){
