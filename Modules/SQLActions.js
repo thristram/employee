@@ -38,10 +38,13 @@ var connected = false;
 
 var createConnection = function(callback){
 	if(SQLConnection){
-		SQLConnection.getConnection(function(err, connection) {
-			connection.release();
-			connection.destroy();
-		})
+		SQLConnection.end(function (err) {
+			if(err){
+				console.log(err);
+			}
+			console.log("Pool Closed");
+		});
+
 	}
 	SQLConnection = mysql.createPool(global.config.database);
 
@@ -49,6 +52,12 @@ var createConnection = function(callback){
 		if (err){
 			connection.release();
 			connection.destroy();
+			SQLConnection.end(function (err) {
+				if(err){
+					console.log(err);
+				}
+				console.log("Pool Closed");
+			});
 			connected = false;
 			callback(false);
 			// throw err;
