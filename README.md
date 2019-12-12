@@ -5,7 +5,9 @@
 ## Environment
 
 NodeJS v10.x
+
 NPM (Usually come with NodeJS installation)
+
 MySQL Server v5.7 (Currently do not compatible with v8.x due to new authentication method)
 
 Detail on how to install NodeJS and MySQL Server can be found here.
@@ -28,6 +30,13 @@ Do the following command and follow instructions. You may need to present a MySQ
 ```sh
 node PROJECT_ROOT_DIECTORY/bin/www
 ```
+
+The app will be listening to port 3001, so if running on localhost, the address may be 
+
+```sh
+http://localhost:3001/
+```
+
 ## Demo
 A demo website can be found at http://employee.thristram.com (Sorry, no https access, because it is expensive to buy a https cretificate)
 
